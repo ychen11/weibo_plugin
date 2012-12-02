@@ -23,12 +23,39 @@ req.open(
 req.onload = showPhotos;
 req.send(null);
 
-var test = new WeiAssNetworkApi("1402172485", "2.00GowZDCPH4tWB4f3f8a3122BmfptC");
-test.getNewsCount();
+function MainController(){
+    this._username = null;
+    this._networkobj = null;
+}
+
+MainController.prototype.InitHomePage = function(){
+    this._networkobj = new WeiAssNetworkApi("1402172485", "2.00GowZDCPH4tWB4f3f8a3122BmfptC");
+    this._networkobj.requestNewsCount(this);
+ /*   var data = null;
+    var thiz = this;
+    setTimeout(function(){
+        var tmp = thiz._networkobj.getNewsCount();
+        if (tmp != null)
+            data = tmp;
+    }, 10000);
+    if (-1 == data){
+        aler("sucess!");
+        $("#main_space").css({'width':'200px','height':'150px'});
+    }*/
+}
+
+MainController.prototype.getInfoafterInit = function(obj){
+    if (obj == -1){
+        $("#main_space").css({'width':'200px','height':'150px'});
+    }
+}
+
+var mainObj = new MainController();
+mainObj.InitHomePage();
 
 function showPhotos() {
   var res = req.responseText;
-  $('body').css('background','#000');
+ // $('body').css('background-image','url(background.jpg)');
 }
 
 // See: http://www.flickr.com/services/api/misc.urls.html

@@ -19,21 +19,30 @@ WeiAssInitData.prototype.getToken = function(){
 function WeiAssNetworkApi(appkey, accesstoken){
     this._appkey = appkey;
     this._accesstoken = accesstoken;
+    this._newsCountRet = null;
 }
 
-WeiAssNetworkApi.prototype.getNewsCount = function(){
+WeiAssNetworkApi.prototype.requestNewsCount = function(ptr){
     var url = "https://rm.api.weibo.com/2/remind/unread_count.json?source=" + this._appkey + "&access_token=" + this._accesstoken;
+    var thiz = ptr;
      $.ajax({
          url: url, // url,
          type: "GET",
          dataType: "json",
          syc: "false",
          success: function (data) {
-             var ttlcnt = data.follower;
-             if (ttlcnt != 0)
-                 alert("news");
-             else
-                 alert("no news");
+             var ttlcnt = data.follower + data.cmt + data.dm + data.mention_cmt + data.group + data.notice + data.invite;
+             if (ttlcnt != 0){
+                 thiz.getInfoafterInit(data);
+                // alert(ret);
+             }else{
+                 thiz.getInfoafterInit(-1);
+                // alert(thiz._newsCountRet);
+             }
          }
      });
+}
+
+WeiAssNetworkApi.prototype.getNewsCount = function(){
+    return this._newsCountRet;
 }

@@ -29,8 +29,16 @@ function MainController(){
 }
 
 MainController.prototype.InitHomePage = function(){
+    //document.getElementById('no_news').style = "dispz;
+    $(document).ready(function(){
+        $("#main_space").hide();
+        $("#loading_space").show();
+    });
+    //$("p").hide();
+    //alert("sucess");
     this._networkobj = new WeiAssNetworkApi("1402172485", "2.00GowZDCPH4tWB4f3f8a3122BmfptC");
     this._networkobj.requestNewsCount(this);
+    
  /*   var data = null;
     var thiz = this;
     setTimeout(function(){
@@ -46,12 +54,17 @@ MainController.prototype.InitHomePage = function(){
 
 MainController.prototype.getInfoafterInit = function(obj){
     if (obj == -1){
-        $("#main_space").css({'width':'200px','height':'150px'});
+        $("#main_space").show();
+        $("#loading_space").hide();
+        $("#main_space").css({'width':'100px','height':'30px'});
+        $("#no_news").text("No news...");
+        $("#no_news").css({'text-align':'center'});
     }
 }
 
 var mainObj = new MainController();
 mainObj.InitHomePage();
+
 
 function showPhotos() {
   var res = req.responseText;

@@ -9,6 +9,7 @@
   },
   "permissions": [
     "http://api.flickr.com/",
-    "https://api.weibo.com/"
+    "https://api.weibo.com/",
+    "https://rm.api.weibo.com/"
   ]
 }

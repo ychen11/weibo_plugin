@@ -1,6 +1,8 @@
-// Copyright (c) 2012 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
+//Weibo Assistant, ver. in development
+//popup.js is the main controller.
+//Author: Yiwei Chen 
+//Email: chenyiwei1987@gmail.com
+
 
 var req = new XMLHttpRequest();
 req.open(
@@ -20,6 +22,9 @@ req.open(
     true);
 req.onload = showPhotos;
 req.send(null);
+
+var test = new WeiAssNetworkApi("1402172485", "2.00GowZDCPH4tWB4f3f8a3122BmfptC");
+test.getNewsCount();
 
 function showPhotos() {
   var res = req.responseText;

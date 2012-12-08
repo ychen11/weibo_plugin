@@ -43,6 +43,20 @@ WeiAssNetworkApi.prototype.requestNewsCount = function(ptr){
      });
 }
 
+WeiAssNetworkApi.prototype.getComments = function(count, ptr){
+    var url = "https://api.weibo.com/2/comments/to_me.json?source=" + this._appkey + "&count=" + count + "&access_token=" + this._accesstoken;
+    var thiz = ptr;
+    $.ajax({
+        url: url,
+        type: "GET",
+        dataType: "json",
+        syc: "false",
+        success: function(data){
+            var test = data.comments;
+        }
+    });
+}
+
 WeiAssNetworkApi.prototype.getNewsCount = function(){
     return this._newsCountRet;
 }

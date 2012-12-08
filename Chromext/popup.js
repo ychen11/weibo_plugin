@@ -8,8 +8,8 @@ var req = new XMLHttpRequest();
 req.open(
     "GET",
     "https://api.weibo.com/2/comments/to_me.json?" +
-        "source=1402172485" +
-        "&access_token=2.00GowZDCPH4tWB4f3f8a3122BmfptC",
+    "source=1402172485" +
+    "&access_token=2.00GowZDCPH4tWB4f3f8a3122BmfptC",
  /*   "http://api.flickr.com/services/rest/?" +
         "method=flickr.photos.search&" +
         "api_key=90485e931f687a9b9c2a66bf58a3861a&" +
@@ -59,6 +59,8 @@ MainController.prototype.getInfoafterInit = function(obj){
         $("#main_space").css({'width':'100px','height':'30px'});
         $("#no_news").text("No news...");
         $("#no_news").css({'text-align':'center'});
+    }else{
+        this._networkobj.getComments(10, this);
     }
 }
 

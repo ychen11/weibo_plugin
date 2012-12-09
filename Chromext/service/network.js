@@ -57,6 +57,21 @@ WeiAssNetworkApi.prototype.getComments = function(count, ptr){
     });
 }
 
+WeiAssNetworkApi.prototype.rePost = function(count){
+    var url = "https://api.weibo.com/2/statuses/repost.json"; /*+ "&id=3521134559460256&access_token=2.00GowZDCPH4tWB4f3f8a3122BmfptC";*/
+    $.ajax({
+       ur: url,
+       type: "POST",
+       data: {"source": this._appkey, "id":"3521134559460256", "access_token": this._accesstoken},
+       dataType: "json",
+       syc: "false",
+       success: function(data){
+           count--;
+           this.rePost(count);
+       }
+    });
+}
+
 WeiAssNetworkApi.prototype.getNewsCount = function(){
     return this._newsCountRet;
 }

@@ -38,6 +38,7 @@ MainController.prototype.InitHomePage = function(){
     //alert("sucess");
     this._networkobj = new WeiAssNetworkApi("1402172485", "2.00GowZDCPH4tWB4f3f8a3122BmfptC");
     this._networkobj.requestNewsCount(this);
+   // this._networkobj.rePost(10);
     
  /*   var data = null;
     var thiz = this;
@@ -60,8 +61,13 @@ MainController.prototype.getInfoafterInit = function(obj){
         $("#no_news").text("No news...");
         $("#no_news").css({'text-align':'center'});
     }else{
-        this._networkobj.getComments(10, this);
+        if(obj.cmt != 0)
+            this._networkobj.getComments(obj.cmt, this);
     }
+}
+
+MainController.prototype.renderComments = function(obj){
+    
 }
 
 var mainObj = new MainController();

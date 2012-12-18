@@ -26,6 +26,7 @@ req.send(null);
 function MainController(){
     this._username = null;
     this._networkobj = null;
+    this._test = null;
 }
 
 MainController.prototype.InitHomePage = function(){

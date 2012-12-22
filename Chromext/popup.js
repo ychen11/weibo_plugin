@@ -37,8 +37,10 @@ MainController.prototype.InitHomePage = function(){
     });
     //$("p").hide();
     //alert("sucess");
-    this._networkobj = new WeiAssNetworkApi("1402172485", "2.00GowZDCPH4tWB4f3f8a3122BmfptC");
-    this._networkobj.requestNewsCount(this);
+  //  this._networkobj = new WeiAssNetworkApi("1402172485", "2.00GowZDCPH4tWB4f3f8a3122BmfptC");
+  //  this._networkobj.requestNewsCount(this);
+    var test = new SectionSize(true);
+    test.requestDistricts(10, 0, 0, 0);
    // this._networkobj.rePost(10);
     
  /*   var data = null;
